@@ -1,0 +1,1105 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Contenedor principal de contenido (MUY IMPORTANTE para los márgenes laterales) */
+/* Esta clase 'container' se usa en ambas barras (gris y azul) */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px; /* Espaciado interno a los lados */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Estilos de la BARRA SUPERIOR GRIS */
+.top-bar {
+    background-color: #333; /* Color gris oscuro */
+    color: #fff; /* Color de texto blanco por defecto */
+    padding: 10px 0; /* Espaciado vertical */
+    font-size: 0.95em;
+}
+
+.top-bar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Asegúrate de que .container ya aplica padding-left y padding-right */
+}
+
+.top-bar-left ul,
+.top-bar-right ul {
+    display: flex;
+    gap: 30px; /* Espacio entre los enlaces */
+}
+
+.top-bar-left a,
+.top-bar-right a {
+    color: #fff; /* Enlaces blancos */
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.top-bar-left a:hover,
+.top-bar-right a:hover {
+    color: #ccc; /* Un gris más claro al pasar el mouse */
+}
+
+
+/* Estilos de la BARRA PRINCIPAL AZUL */
+/* La clase .hero puede no necesitar background-color si solo contiene la .nav.container */
+.hero {
+    /* No se necesita background-color aquí si .nav.container lo tiene */
+}
+
+.nav.container {
+    background-color: #3f7de1; /* Color azul */
+    padding: 20px 40px; /* Más padding vertical y lateral */
+    /* max-width y margin: 0 auto ya están en .container general */
+    /* display, align-items, justify-content también están en .container general */
+    /* Asegúrate de que la clase 'container' en tu HTML esté en el elemento correcto */
+    /* En este caso, el .nav.container hereda de .container, por eso no es necesario repetirlos */
+}
+
+/* Estilos del logo */
+.nav_logo-img {
+    height: 60px; /* Tamaño del logo */
+    width: auto;
+    display: block;
+}
+
+/* Estilos para las nuevas clases de listas de navegación en la barra azul */
+.nav_link--categories,
+.nav_link--user-actions {
+    display: flex;
+    align-items: center;
+    gap: 35px; /* Espacio entre los elementos */
+}
+
+.nav_logo-img {
+    height: 60px; 
+    width: auto; 
+    display: block;
+    border-radius: 30px; 
+    
+}
+
+.nav_logo {
+    margin-right: 40px; /* <<-- Aumenta este valor para más espacio a la derecha del logo -->> */
+}
+
+.nav_links {
+    color: #fff;
+    font-size: 1.1em;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: color 0.3s ease;
+}
+
+.nav_links:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Estilos específicos para la barra de búsqueda */
+.search-bar {
+    flex-grow: 1;
+    margin: 0 40px; /* Margen lateral */
+    max-width: 700px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+}
+
+.search-bar input[type="text"] {
+    border: none;
+    padding: 12px 18px;
+    flex-grow: 1;
+    font-size: 1.1em;
+    outline: none;
+}
+
+.search-bar button {
+    background-color: #fff;
+    border: none;
+    padding: 12px 18px;
+    cursor: pointer;
+    color: #3f7de1; /* Color azul para la lupa */
+    font-size: 1.3em;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Estilos para los íconos de Font Awesome */
+.nav_links i {
+    font-size: 1.6em;
+}
+
+/* Ajustes para el ícono de usuario en "Iniciar sesión" */
+/* Asegúrate de que esta clase sea correcta ahora: .nav_link--user-actions .nav_items:first-child */
+.nav_link--user-actions .nav_items:first-child .nav_links i {
+    font-size: 2em;
+}
+.nav_link--user-actions .nav_items:first-child .nav_links {
+    font-size: 1.2em;
+    flex-direction: column;
+}
+
+
+/* MEDIA QUERIES para responsividad */
+@media (max-width: 992px) {
+    .container {
+        padding: 0 25px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .top-bar-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    .top-bar-left ul,
+    .top-bar-right ul {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    /* Ajusta estos para las nuevas clases de la barra azul */
+    .nav_logo,
+    .nav_link--categories,
+    .search-bar,
+    .nav_link--user-actions {
+        flex-basis: 100%;
+        margin-bottom: 15px;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .search-bar {
+        margin: 15px 0;
+    }
+
+    .nav_link--categories,
+    .nav_link--user-actions {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    /* Asegúrate de que .nav_logo .nav_title se refiere a tu logo si aún usas texto */
+    .nav_logo .nav_title { /* Si usas imagen, esta regla podría ser innecesaria */
+        font-size: 1.8em;
+    }
+
+    .nav_links {
+        font-size: 0.9em;
+        flex-direction: column;
+    }
+
+    .nav_links i {
+        font-size: 1.3em;
+    }
+
+    .search-bar input {
+        font-size: 0.9em;
+    }
+
+    .search-bar button {
+        font-size: 1em;
+        padding: 8px 12px;
+    }
+}
+
+.main-banner {
+    position: relative; /* Esencial para posicionar flechas e indicadores */
+    height: 600px; /* Altura fija para el banner. Ajusta según necesites */
+    overflow: hidden; /* Oculta las partes de las imágenes que se salen del contenedor */
+    width: 100%;
+}
+
+.carousel-inner {
+    display: flex; /* Permite que las diapositivas se coloquen una al lado de la otra */
+    width: 100%; /* Si tienes 3 slides, será 300%; 4 slides, 400%, etc. */
+    height: 100%;
+    transition: transform 0.5s ease-in-out; /* Animación de deslizamiento */
+}
+
+.carousel-item {
+    min-width: 100%; /* Cada slide ocupa el ancho completo de .main-banner */
+    height: 100%;
+    position: relative; /* Para el contenido superpuesto */
+    display: flex; /* Para centrar el contenido verticalmente si se desea */
+    align-items: center;
+    color: #fff; /* Texto blanco por defecto */
+}
+
+.carousel-item .carousel-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+    z-index: -1; /* Envía la imagen al fondo para que el contenido sea visible */
+}
+
+/* El contenido del banner dentro de cada item */
+.main-banner .banner-content {
+    /* Usamos el .container existente para los márgenes laterales */
+    /* Asegúrate de que .container en HTML está en el elemento correcto */
+    /* Aquí necesitamos sobrescribir algunos flex para organizar el contenido */
+    display: flex; /* Para que los elementos dentro fluyan normalmente */
+    width: 100%; /* Ocupa el ancho completo dentro del container */
+    height: 100%;
+    max-width: 1200px; /* Heredado de .container */
+    margin: 0 auto; /* Heredado de .container */
+    padding: 0 40px; /* Heredado de .container */
+    position: relative; /* Para que esté sobre la imagen */
+    z-index: 1; /* Asegura que el contenido esté por encima de la imagen */
+}
+
+.main-banner .banner-text h1 {
+    font-size: 4.5em; /* Tamaño grande para el título */
+    margin-bottom: 10px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Sombra más fuerte para contraste */
+}
+
+.main-banner .banner-text .discount {
+    font-size: 2.2em; /* Tamaño para "Hasta ... de descuento" */
+    margin-bottom: 25px;
+    font-weight: normal;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.main-banner .banner-text .discount span {
+    font-size: 1.8em; /* Tamaño aún más grande para el porcentaje */
+    color: #e13f7d; /* Color rosa llamativo */
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.main-banner .banner-buttons {
+    display: flex;
+    gap: 15px; /* Espacio entre los botones */
+    margin-top: 20px;
+}
+
+.main-banner .btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.main-banner .btn-primary {
+    background-color: #fff;
+    color: #3f7de1; /* Azul de tu tema */
+}
+
+.main-banner .btn-primary:hover {
+    background-color: #f0f0f0;
+}
+
+.main-banner .btn-secondary {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff; /* Borde blanco */
+}
+
+.main-banner .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Nuevo tipo de botón para la tercera diapositiva (opcional) */
+.main-banner .btn-tertiary {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+.main-banner .btn-tertiary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Estilos de los Controles de Navegación (Flechas) */
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    color: #fff;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 2em;
+    z-index: 10; /* Asegura que estén por encima de las imágenes */
+    transition: background-color 0.3s ease;
+    border-radius: 50%; /* Botones redondos */
+    width: 60px; /* Ancho y alto para que sean círculos perfectos */
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-control.prev {
+    left: 20px;
+}
+
+.carousel-control.next {
+    right: 20px;
+}
+
+.carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Estilos de los Indicadores (Puntos) */
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5); /* Puntos semitransparentes */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dot.active {
+    background-color: #fff; /* Punto activo blanco */
+    transform: scale(1.2); /* Resalta el punto activo */
+}
+
+
+/* MEDIA QUERIES para responsividad del banner */
+@media (max-width: 992px) {
+    .main-banner {
+        height: 450px;
+    }
+    .main-banner .banner-text h1 {
+        font-size: 3.5em;
+    }
+    .main-banner .banner-text .discount {
+        font-size: 1.8em;
+    }
+    .main-banner .banner-text .discount span {
+        font-size: 1.5em;
+    }
+    .carousel-control {
+        font-size: 1.5em;
+        width: 50px;
+        height: 50px;
+        padding: 10px;
+    }
+    .carousel-control.prev {
+        left: 10px;
+    }
+    .carousel-control.next {
+        right: 10px;
+    }
+    .carousel-indicators {
+        bottom: 10px;
+    }
+    .dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-banner {
+        height: 350px;
+    }
+    .main-banner .banner-text h1 {
+        font-size: 2.8em;
+    }
+    .main-banner .banner-text .discount {
+        font-size: 1.5em;
+    }
+    .main-banner .banner-text .discount span {
+        font-size: 1.3em;
+    }
+    .main-banner .banner-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .main-banner .btn {
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .main-banner {
+        height: 280px;
+        text-align: center;
+    }
+    .main-banner .banner-content {
+        padding: 0 20px;
+    }
+    .main-banner .banner-text h1 {
+        font-size: 2em;
+    }
+    .main-banner .banner-text .discount {
+        font-size: 1.2em;
+    }
+    .main-banner .banner-text .discount span {
+        font-size: 1.1em;
+        display: block;
+        margin-left: 0;
+        margin-top: 5px;
+    }
+    .main-banner .banner-buttons {
+        margin-top: 15px;
+    }
+    .main-banner .btn {
+        font-size: 1em;
+        padding: 10px 20px;
+    }
+    .carousel-control {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+    .carousel-control.prev {
+        left: 5px;
+    }
+    .carousel-control.next {
+        right: 5px;
+    }
+}
+
+.banner-overlay-content {
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo negro semitransparente */
+    padding: 30px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes ligeramente redondeados */
+    max-width: 500px; /* Limita el ancho para que no ocupe toda la pantalla */
+    text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+    position: absolute; /* Permite posicionarlo dentro de .banner-content */
+    left: 40px; /* Margen desde la izquierda (igual al padding del container) */
+    top: 50%; /* Inicia en el centro vertical */
+    transform: translateY(-50%); /* Centra el elemento verticalmente */
+}
+
+
+.main-banner .banner-text h1 {
+    font-size: 4.5em;
+    margin-bottom: 10px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Sombra más pronunciada */
+}
+
+.main-banner .banner-text .discount {
+    font-size: 2.2em;
+    margin-bottom: 25px;
+    font-weight: normal;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.main-banner .banner-text .discount span {
+    font-size: 1.8em;
+    color: #e13f7d;
+    font-weight: bold;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.main-banner .banner-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* Los estilos de .btn, .btn-primary, .btn-secondary, .btn-tertiary se mantienen igual */
+
+/* MEDIA QUERIES para responsividad del banner */
+@media (max-width: 992px) {
+    .main-banner {
+        height: 450px;
+    }
+    .banner-overlay-content {
+        max-width: 400px; /* Ajuste para pantallas más pequeñas */
+        padding: 25px;
+        left: 25px; /* Ajuste del margen lateral */
+    }
+    .main-banner .banner-text h1 {
+        font-size: 3.5em;
+    }
+    .main-banner .banner-text .discount {
+        font-size: 1.8em;
+    }
+    .main-banner .banner-text .discount span {
+        font-size: 1.5em;
+    }
+    /* ... (rest of media query rules) ... */
+}
+
+@media (max-width: 768px) {
+    .main-banner {
+        height: 350px;
+    }
+    .banner-overlay-content {
+        max-width: 90%; /* Ocupa casi todo el ancho disponible */
+        left: 50%; /* Centra horizontalmente */
+        transform: translate(-50%, -50%); /* Centra ambos ejes */
+        text-align: center; /* Centra el texto y botones */
+        padding: 20px;
+    }
+    .main-banner .banner-text h1 {
+        font-size: 2.8em;
+    }
+    .main-banner .banner-text .discount {
+        font-size: 1.5em;
+    }
+    .main-banner .banner-text .discount span {
+        font-size: 1.3em;
+    }
+    .main-banner .banner-buttons {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center; /* Centra los botones apilados */
+    }
+    /* ... (rest of media query rules) ... */
+}
+
+@media (max-width: 576px) {
+    .main-banner {
+        height: 280px;
+    }
+    .banner-overlay-content {
+        padding: 15px;
+    }
+    .main-banner .banner-text h1 {
+        font-size: 2em;
+    }
+    .main-banner .banner-text .discount {
+        font-size: 1.2em;
+    }
+    .main-banner .banner-text .discount span {
+        font-size: 1.1em;
+        display: inline-block; /* Vuelve a inline-block si hay espacio, o deja block si prefieres */
+        margin-top: 0;
+    }
+    /* ... (rest of media query rules) ... */
+}
+
+.product-carousel-section {
+    padding: 40px 0; /* Espaciado vertical para la sección */
+    background-color: #f8f8f8; /* El mismo color de fondo del body */
+}
+
+.product-carousel-header {
+    margin-bottom: 30px; /* Espacio debajo del encabezado */
+    /* .container ya tiene display: flex, justify-content: space-between, align-items: center */
+    /* No necesitamos repetir esas propiedades aquí si el .container ya las provee */
+}
+
+.product-carousel-header h2 {
+    font-size: 2.2em;
+    color: #333;
+    margin: 0; /* Reinicia el margen por defecto del h2 */
+}
+
+.product-carousel-header .view-more-link {
+    color: #e13f7d; /* Color rosa, similar al de Liverpool */
+    font-weight: bold;
+    font-size: 1.1em;
+    display: flex; /* Para alinear el texto con el ícono */
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s ease;
+}
+
+.product-carousel-header .view-more-link:hover {
+    color: #a02d5b; /* Tono más oscuro al pasar el mouse */
+}
+
+/* Estilos del Contenedor del Carrusel y las flechas */
+.product-carousel-wrapper {
+    position: relative;
+    overflow: hidden; /* Oculta los productos que están fuera de la vista */
+    margin: 0 40px; /* Margen a los lados para las flechas (o ajustar a 0 y que las flechas floten fuera) */
+}
+
+.product-carousel-inner {
+    display: flex;
+    gap: 20px; /* Espacio entre las tarjetas de producto */
+    padding: 0 20px; /* Espaciado interno para que las primeras/últimas tarjetas no toquen los bordes */
+    overflow-x: hidden; /* Esto es clave: ocultamos el scrollbar nativo */
+    scroll-behavior: smooth; /* Desplazamiento suave con JS */
+    /* Para que las flechas puedan sobresalir de los 40px del wrapper, podemos ajustar el padding */
+    /* Por ejemplo, en lugar de margin en wrapper, padding en inner, y el wrapper no tiene margin */
+    /* Esta es una forma común de manejarlo */
+}
+
+/* Estilos de las Tarjetas de Producto */
+.product-card {
+    flex: 0 0 auto; /* No crecer, no encoger, basa el tamaño en el contenido */
+    width: 250px; /* Ancho fijo para cada tarjeta de producto. Ajusta según tus necesidades */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Asegura que la imagen no se salga si es demasiado grande */
+    text-align: center;
+    padding-bottom: 15px; /* Espacio al final de la tarjeta */
+    transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px); /* Pequeño efecto al pasar el mouse */
+}
+
+.product-card-img {
+    width: 100%;
+    height: 200px; /* Altura fija para las imágenes de producto */
+    object-fit: contain; /* Asegura que la imagen completa sea visible y no se recorte */
+    padding: 10px; /* Pequeño padding interno para que la imagen no toque los bordes */
+}
+
+.product-card-info {
+    padding: 0 15px; /* Espaciado interno para el texto */
+}
+
+.product-name {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 5px;
+    height: 3em; /* Altura fija para asegurar que todos los nombres ocupen el mismo espacio */
+    overflow: hidden; /* Oculta el texto que excede la altura */
+    text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es muy largo */
+    display: -webkit-box; /* Para multiline ellipsis */
+    -webkit-line-clamp: 2; /* Muestra un máximo de 2 líneas */
+    -webkit-box-orient: vertical;
+}
+
+.product-old-price {
+    font-size: 0.85em;
+    color: #999;
+    text-decoration: line-through; /* Tachado para el precio original */
+    margin-bottom: 2px;
+}
+
+.product-price {
+    font-size: 1.4em;
+    color: #e13f7d; /* Color rosa para el precio de descuento */
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+/* Estilos de las Flechas de Navegación del Carrusel de Productos */
+.product-carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff; /* Fondo blanco para las flechas */
+    color: #555; /* Color gris para el ícono */
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 1.8em;
+    z-index: 5; /* Asegura que estén por encima de los productos */
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-carousel-control.prev {
+    left: 0; /* Posiciona la flecha a la izquierda del wrapper */
+}
+
+.product-carousel-control.next {
+    right: 0; /* Posiciona la flecha a la derecha del wrapper */
+}
+
+.product-carousel-control:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Ocultar flechas cuando no hay más productos para deslizar */
+.product-carousel-control.hidden {
+    opacity: 0;
+    pointer-events: none; /* Deshabilita el clic cuando está oculto */
+}
+
+
+/* MEDIA QUERIES para la sección de productos */
+@media (max-width: 1200px) {
+    /* Ajusta el padding para la sección cuando el container se reduce */
+    .product-carousel-section {
+        padding: 30px 0;
+    }
+}
+
+@media (max-width: 992px) {
+    .product-carousel-header h2 {
+        font-size: 1.8em;
+    }
+    .product-carousel-header .view-more-link {
+        font-size: 1em;
+    }
+    .product-card {
+        width: 220px; /* Reduce el ancho de las tarjetas */
+    }
+    .product-carousel-inner {
+        gap: 15px;
+        padding: 0 15px;
+    }
+    .product-carousel-wrapper {
+        margin: 0 20px; /* Ajusta los márgenes para las flechas */
+    }
+    .product-carousel-control {
+        font-size: 1.5em;
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-carousel-header {
+        flex-direction: column; /* Apila título y "ver más" */
+        align-items: flex-start;
+        gap: 10px;
+        padding: 0 40px; /* Mantén el padding del container */
+    }
+    .product-carousel-wrapper {
+        margin: 0 10px; /* Reduce el margen del wrapper */
+    }
+    .product-card {
+        width: 180px; /* Reduce aún más el ancho de las tarjetas */
+    }
+    .product-card-img {
+        height: 150px;
+    }
+    .product-name {
+        font-size: 0.85em;
+    }
+    .product-old-price,
+    .product-price {
+        font-size: 1.2em; /* Ajusta el tamaño del precio */
+    }
+    .product-carousel-control {
+        padding: 8px;
+        width: 35px;
+        height: 35px;
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 576px) {
+    .product-carousel-section {
+        padding: 25px 0;
+    }
+    .product-carousel-header {
+        padding: 0 20px; /* Ajusta el padding para móviles */
+    }
+    .product-carousel-header h2 {
+        font-size: 1.6em;
+        text-align: center;
+        width: 100%;
+    }
+    .product-carousel-header .view-more-link {
+        width: 100%;
+        justify-content: center;
+    }
+    .product-carousel-wrapper {
+        margin: 0; /* Sin margen en pantallas muy pequeñas, flechas más pegadas */
+    }
+    .product-carousel-inner {
+        padding: 0 10px; /* Padding reducido para las tarjetas */
+        gap: 10px;
+    }
+    .product-card {
+        width: 150px; /* Tamaño aún más pequeño */
+    }
+    .product-card-img {
+        height: 120px;
+    }
+    .product-name {
+        font-size: 0.8em;
+        height: 2.8em; /* Ajusta la altura del nombre */
+    }
+    .product-price {
+        font-size: 1.1em;
+    }
+    .product-carousel-control {
+        left: 5px;
+        right: 5px;
+    }
+}
+
+
+.site-footer {
+    background-color: #4A4A4A; /* Fondo gris oscuro similar al de Liverpool */
+    color: #f0f0f0; /* Color de texto general del footer */
+    padding-top: 40px; /* Espaciado superior */
+    font-size: 0.95em;
+}
+
+.footer-upper {
+    display: flex;
+    flex-wrap: wrap; /* Permite que las columnas se envuelvan en pantallas pequeñas */
+    justify-content: space-between; /* Distribuye el espacio entre las columnas */
+    padding-bottom: 30px; /* Espaciado inferior de la sección superior */
+    /* .container ya tiene max-width y padding laterales */
+}
+
+.footer-column {
+    flex: 1; /* Permite que las columnas crezcan y se encojan */
+    min-width: 200px; /* Ancho mínimo para cada columna antes de envolverse */
+    margin-bottom: 20px; /* Espacio entre columnas cuando se apilan */
+}
+
+.footer-column h4,
+.footer-contact h4 {
+    color: #fff; /* Títulos de columna más blancos */
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column ul li,
+.footer-contact p {
+    margin-bottom: 8px; /* Espacio entre elementos de lista/párrafos */
+    line-height: 1.4;
+}
+
+.footer-column a,
+.footer-contact a {
+    color: #f0f0f0; /* Enlaces ligeramente más claros */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover,
+.footer-contact a:hover {
+    color: #e13f7d; /* Color rosa al pasar el mouse */
+}
+
+.footer-contact {
+    min-width: 250px; /* Un poco más ancho para el contacto */
+}
+
+.footer-contact .whatsapp-link {
+    color: #25D366; /* Verde de WhatsApp */
+    font-weight: bold;
+}
+
+.footer-contact .whatsapp-link:hover {
+    color: #1DA851; /* Verde más oscuro al pasar el mouse */
+}
+
+/* Línea separadora */
+.footer-separator {
+    width: calc(100% - 80px); /* Ancho ajustado por el padding del container */
+    max-width: 1120px; /* Max-width del container - (2 * padding) */
+    margin: 0 auto 20px auto; /* Centrado y margen inferior */
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Línea gris muy tenue */
+}
+
+
+.footer-lower {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px; /* Espaciado superior después de la línea */
+    padding-bottom: 20px; /* Espaciado final del footer */
+    font-size: 0.85em;
+    /* .container ya tiene max-width y padding laterales */
+}
+
+.footer-copyright-info {
+    flex: 1;
+    min-width: 280px; /* Ancho mínimo antes de apilar */
+    margin-bottom: 10px;
+}
+
+.footer-copyright-info p {
+    margin: 0 0 5px 0; /* Espacio entre párrafos de copyright */
+}
+
+.footer-copyright-info a {
+    color: #f0f0f0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-copyright-info a:hover {
+    color: #e13f7d;
+}
+
+.footer-legal-social {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los enlaces legales y sociales se envuelvan */
+    align-items: center;
+    gap: 20px; /* Espacio entre la lista de enlaces y los íconos */
+    margin-bottom: 10px;
+}
+
+.footer-legal-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px; /* Espacio entre los enlaces legales */
+}
+
+.footer-legal-links a {
+    color: #f0f0f0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-legal-links a:hover {
+    color: #e13f7d;
+}
+
+.footer-social-links {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 15px; /* Espacio entre los íconos sociales */
+}
+
+.footer-social-links a {
+    color: #f0f0f0;
+    font-size: 1.2em; /* Tamaño de los íconos */
+    transition: color 0.3s ease;
+}
+
+.footer-social-links a:hover {
+    color: #e13f7d; /* Color rosa al pasar el mouse */
+}
+
+
+/* MEDIA QUERIES para el Footer */
+@media (max-width: 992px) {
+    .site-footer {
+        padding-top: 30px;
+    }
+    .footer-upper {
+        flex-direction: column; /* Apila las columnas */
+        align-items: flex-start;
+        padding-bottom: 20px;
+    }
+    .footer-column,
+    .footer-contact {
+        width: 100%; /* Ocupan todo el ancho */
+        min-width: unset; /* Quita el min-width */
+        margin-bottom: 15px;
+        padding-left: 40px; /* Alinea con el padding del container */
+    }
+    .footer-separator {
+        width: calc(100% - 80px); /* Mantiene el ancho ajustado */
+        margin-bottom: 15px;
+    }
+    .footer-lower {
+        flex-direction: column; /* Apila la información de copyright y legal/social */
+        align-items: flex-start;
+        padding-top: 0;
+        padding-bottom: 15px;
+    }
+    .footer-copyright-info,
+    .footer-legal-social {
+        width: 100%;
+        margin-bottom: 10px;
+        padding-left: 40px; /* Alinea con el padding del container */
+    }
+    .footer-legal-links {
+        flex-direction: column; /* Apila los enlaces legales */
+        gap: 5px;
+    }
+    .footer-social-links {
+        justify-content: flex-start; /* Alinea los íconos a la izquierda */
+    }
+}
+
+@media (max-width: 576px) {
+    .site-footer {
+        padding-top: 25px;
+        font-size: 0.85em;
+    }
+    .footer-upper {
+        padding-bottom: 15px;
+    }
+    .footer-column,
+    .footer-contact {
+        padding-left: 20px; /* Ajusta el padding para móviles más pequeños */
+    }
+    .footer-column h4,
+    .footer-contact h4 {
+        font-size: 1em;
+        margin-bottom: 10px;
+    }
+    .footer-separator {
+        width: calc(100% - 40px); /* Ajusta el ancho por el padding del container */
+        margin-bottom: 10px;
+    }
+    .footer-lower {
+        padding-bottom: 10px;
+    }
+    .footer-copyright-info,
+    .footer-legal-social {
+        padding-left: 20px; /* Ajusta el padding para móviles más pequeños */
+    }
+    .footer-legal-links {
+        gap: 10px; /* Si se apilan, este gap es vertical */
+    }
+    .footer-social-links {
+        justify-content: center; /* Centra los iconos en móviles */
+        width: 100%; /* Ocupa todo el ancho para centrar */
+        gap: 20px;
+    }
+}
